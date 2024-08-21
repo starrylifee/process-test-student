@@ -100,7 +100,7 @@ with st.container():
             with st.spinner("💬 AI가 답변을 검토 중..."):
                 # 학생의 답변과 문제를 하나의 문자열로 합치는 부분
                 student_input = "\n\n".join([
-                    f"Question {i}: {st.session_state.questions[f'Question{i}']}\nAnswer: {st.session_state[f'answer{i}']}" 
+                    f"Question {i}: {st.session_state.questions[f'Question{i}']}\nAnswer: {st.session_state.get(f'answer{i}', '')}" 
                     for i in range(1, 4)
                 ])
                 
@@ -124,7 +124,7 @@ with st.container():
         st.markdown("<div class='submit-button'>", unsafe_allow_html=True)
         if st.button("📧 답변 제출하기", key="submit_answers"):
             final_responses = "\n\n".join([
-                f"Question {i}: {st.session_state.questions[f'Question{i}']}\nAnswer: {st.session_state[f'answer{i}']}"
+                f"Question {i}: {st.session_state.questions[f'Question{i}']}\nAnswer: {st.session_state.get(f'answer{i}', '')}"
                 for i in range(1, 4)
             ])
             
